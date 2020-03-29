@@ -19,14 +19,6 @@
             });
             
             
-        
-            function checkLoginState() {
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            }
-            
-            
         };
     
         (function(d, s, id){
@@ -37,13 +29,6 @@
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
 
-        // function statusChangeCallback(response){
-        //     if(response.status === 'connected'){
-        //         console.log('logged In')
-        //     }else{
-        //         console.log('not logged In')
-        //     }
-        // }
         function checkLoginState() {
                 FB.login(function(response) {
                 if (response.status === 'connected') {
