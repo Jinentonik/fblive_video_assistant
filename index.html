@@ -43,17 +43,18 @@
         }
         
         function statusChangeCallback(response){
-            FB.login(function(response) {
-                if (response.status === 'connected') {
-                    // Logged into your webpage and Facebook.
-                    console.log('logged in')
-                    setElement(true)
-                } else {
-                    // The person is not logged into your webpage or we are unable to tell. 
-                    console.log('Not logged in')
-                    setElement(false)
-                }
-                });
+            
+            if (response.status === 'connected') {
+                // Logged into your webpage and Facebook.
+                console.log('logged in')
+                setElement(true)
+                testAPI()
+            } else {
+                // The person is not logged into your webpage or we are unable to tell. 
+                console.log('Not logged in')
+                setElement(false)
+            }
+                
         }
 
         let setElement = (isLoggedIn) => {
@@ -69,6 +70,15 @@
 
         let logOut = () =>{
             setElement(false)
+        }
+
+        let testAPI = () => {
+            console.log('fetching your info...')
+            FB.api('/me', function(response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                'Thanks for logging in, ' + response.name + '!';
+            });
         }
         
             
