@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live video Assistant</title>
+    <style>
+        #logOut {
+            display: none
+        }
+    </style>
 </head>
 <body>
     <div id="fb-root"></div>
@@ -54,19 +59,26 @@
         let setElement = (isLoggedIn) => {
             if(isLoggedIn){
                 document.getElementById("logOut").style.display = "block"
+                document.getElementById("fb-btn").style.display = "none"
             }else{
                 document.getElementById("logOut").style.display = "none"
+                document.getElementById("fb-btn").style.display = "block"
 
             }
+        }
+
+        let logOut = () =>{
+            setElement(false)
         }
         
             
     </script>
     <fb:login-button 
+        id = "fb-btn"
         scope="public_profile,email"
         onlogin="checkLoginState();">
     </fb:login-button>
-    <button id = "logOut"> Log Out</button>
+    <button id = "logOut" onclick= "logOut()"> Log Out</button>
     <div>Hello World!</div>
     
 
