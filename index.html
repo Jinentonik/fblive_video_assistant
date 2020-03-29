@@ -43,7 +43,18 @@
             js.src = "https://connect.facebook.net/en_US/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
-
+        
+        function statusChangeCallback(response){
+            FB.login(function(response) {
+                if (response.status === 'connected') {
+                    // Logged into your webpage and Facebook.
+                    console.log('logged in')
+                } else {
+                    // The person is not logged into your webpage or we are unable to tell. 
+                    console.log('Not logged in')
+                }
+                });
+        }
         
             
     </script>
