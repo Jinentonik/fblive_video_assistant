@@ -75,9 +75,9 @@
         let testAPI = () => {
             console.log('fetching your info...')
             FB.api('/me', function(response) {
+                console.log(response)
                 console.log('Successful login for: ' + response.name);
-                document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.name + '!';
+                document.getElementById('status').innerHTML = `<p>Thank you for loggin in ${response.name}</p>` 
             });
         }
         
@@ -90,6 +90,7 @@
     </fb:login-button>
     <button id = "logOut" onclick= "logOut()"> Log Out</button>
     <div>Hello World!</div>
+    <div id = "status"></div>
     
 
 
