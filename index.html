@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live video Assistant</title>
+</head>
+<body>
+    <!-- <div id="fb-root"></div> -->
+    <!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=415548879337486&autoLogAppEvents=1"></script> -->
+    <button onClick = "checkLoginState()">Click this </button>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '415548879337486',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v6.0'
+            });
+            
+            
+        
+            function checkLoginState() {
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+            }
+            
+            
+        };
+    
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+        // function statusChangeCallback(response){
+        //     if(response.status === 'connected'){
+        //         console.log('logged In')
+        //     }else{
+        //         console.log('not logged In')
+        //     }
+        // }
+        function checkLoginState() {
+                FB.login(function(response) {
+                if (response.status === 'connected') {
+                    // Logged into your webpage and Facebook.
+                    console.log('logged in')
+                } else {
+                    // The person is not logged into your webpage or we are unable to tell. 
+                    console.log('Not logged in')
+                }
+                });
+            }
+            
+    </script>
+      
+
+      <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
+
+    
+</body>
+</html>
