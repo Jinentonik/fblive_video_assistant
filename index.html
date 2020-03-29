@@ -17,9 +17,9 @@
                 xfbml      : true,
                 version    : 'v6.0'
             });
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
+            // FB.getLoginStatus(function(response) {
+            //     statusChangeCallback(response);
+            // });
             
         };
     
@@ -48,6 +48,15 @@
                 }
                 });
         }
+
+        let setElement = (isLoggedIn) => {
+            if(isLoggedIn){
+                document.getElementById("logOut").style.display = "block"
+            }else{
+                document.getElementById("logOut").style.display = "none"
+
+            }
+        }
         
             
     </script>
@@ -55,6 +64,7 @@
         scope="public_profile,email"
         onlogin="checkLoginState();">
     </fb:login-button>
+    <button id = "logOut"> Log Out</button>
     <div>Hello World!</div>
     
 
